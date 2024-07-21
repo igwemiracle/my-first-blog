@@ -1,12 +1,15 @@
 import Navbar from './Navbar';
-import Home from './Home';
+// import Home from './01-Home';
+import HomeTwo from './02-Home'
 
 function App() {
     return (
         <div className="App">
             <Navbar />
             <div className="content">
-                <Home />
+                {/* <Home /> */}
+                <HomeTwo />
+
             </div>
         </div>
     );
@@ -14,4 +17,4 @@ function App() {
 
 export default App;
 
-'@babel/plugin-proposal-private-property-in-object'
+// '@babel/plugin-proposal-private-property-in-object'
