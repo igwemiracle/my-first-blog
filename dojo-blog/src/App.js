@@ -13,3 +13,5 @@ function App() {
 }
 
 export default App;
+
+'@babel/plugin-proposal-private-property-in-object'
