@@ -1,0 +1,16 @@
+{
+    "blogs": [
+        {
+        "title":"My First Blog",
+        "body":"Note that the development build is not optimized.",
+        "author":"James Bond",
+        "id":1
+        },
+        {
+            "title": "My Second Blog",
+            "body": "Note that the development build is not optimized.",
+            "author": "Peter Parker",
+            "id": 2
+        }
+    ]
+}
