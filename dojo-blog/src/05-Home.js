@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 
 const FifthHome = () => {
-    const [blogs, setBlogs] = useState(null)
-    const [isPending, setIsPending] = useState(true)
+    const [blogs, setBlogs] = useState(null);
+    const [isPending, setIsPending] = useState(true);
+    const [error, setError] = useState(null);
     // This simply means only ever fire the function once on the initial render
     //  and not whenever the data changes.
     useEffect(() => {
@@ -12,20 +13,29 @@ const FifthHome = () => {
         setTimeout(() => {
             fetch('http://localhost:8000/blogs')
                 .then(res => {
+                    if (!res.ok) {
+                        throw Error('could not fetch data for that resource');
+                    }
                     return res.json();
                 })
                 .then((data) => {
-                    // console.log(data);
                     setBlogs(data)
                     setIsPending(false)
+                    setError(null)
                 })
-        }, (100000))
+                .catch((err) => {
+                    setError(err.message)
+                    setIsPending(false)
+                })
+        }, (2000))
 
     }, [])
     return (
         <div className="home-03">
-            {/* we render the BlogList once we have data, which is "blogs" */}
+            {error && <div>{error}</div>}
+            {/*A conditional statement that logs the message in the div only if IsPending is true*/}
             {isPending && <div>Is Loading...</div>}
+            {/* we render the BlogList once we have data, which is "blogs" */}
             {blogs && <BlogList blogs={blogs} title="All Blogs!" />}
             {/* This 👉 |<BlogList blogs={blogs} title="All Blogs!"| only works when
             `blogs` works  */}
