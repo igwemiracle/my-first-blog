@@ -9,8 +9,6 @@ const FourthHome = () => {
         { "title": "Web dev tools tip", "id": 3, "Author": "Sixtus", "Body": "Lorem pesume..." },
     ])
 
-    const [name, setName] = useState('Jimmy')
-
     const handleDelete = (id) => {
         // Note: The `filter` method doesn't change the array, it only returns
         //       a new filtered array based on the original array given.
@@ -21,14 +19,18 @@ const FourthHome = () => {
     }
 
     // useEffect Hook: useEffect is another type of the Hook function and it is
-    //      initially rendered when the page is loaded. It runs the function every
-    //      render of the component. For instance it renders every time the state changes.
-    // There might be times when you don't always want to run a function after every render.
-    // That is where dependecy comes into play.
+    //   initially rendered when the page is loaded. It runs the function every
+    //   render of the component. For instance it renders every time the state changes.
+    //   There might be times when you don't always want to run a function after every render.
+    //   That is where dependecy comes into play.
+    //   useEffect is also a good place to fetch data in a component.
+    const [name, setName] = useState('Igwe')
     useEffect(() => {
         console.log("use effect ran!")
         console.log(name)
     }, [name])
+    // Passing `name` as a dependency means that the useEffect Hook only runs the
+    // function inside of it when the state of the "name" changes and doesn't for any other state.
     return (
         <div className="home-03">
 
@@ -39,8 +41,8 @@ const FourthHome = () => {
                 handleDelete={handleDelete} /> */}
             {/*Passing a function as a prop */}
             <BlogList blogs={blogs} title="All Blogs!" handleDelete={handleDelete} />
-            <button onClick={() => setName('Jungkook')}>display name</button>
-            <p>{name}</p>
+            <button onClick={() => setName('Miracle')}>display name</button>
+            <p style={{ paddingTop: "5px", }}>{name}</p>
         </div>
     );
 }

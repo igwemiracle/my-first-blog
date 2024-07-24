@@ -1,7 +1,7 @@
 // How to make a component take in props-data and use that data inside that component.
 // In other words, we can also make it to be reuseable.
 
-const BlogList = ({ blogs, title, handleDelete }) => {
+const BlogList = ({ blogs, title }) => {
     //     The three props can be passed as parameters in curly braces to the BlogList function
     // const blogs = props.blogs;
     // const title = props.title;
@@ -18,7 +18,6 @@ const BlogList = ({ blogs, title, handleDelete }) => {
                         style={{ paddingTop: "30px", paddingLeft: "25px" }}>
                         <h3 style={{ color: "#f1356d" }}> {blog.title}</h3>
                         <p style={{ paddingTop: "4px" }}>Written By {blog.Author}</p>
-                        <button style={{ marginTop: "5px" }} onClick={() => handleDelete(blog.id)}>delete blog</button>
                     </div>
                 )
                 )

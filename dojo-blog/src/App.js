@@ -2,7 +2,8 @@ import Navbar from './Navbar';
 // import Home from './01-Home';
 // import SecondHome from './02-Home'
 // import ThirdHome from './03-Home';
-import FourthHome from './04-Home';
+// import FourthHome from './04-Home';
+import FifthHome from './05-Home';
 
 function App() {
     return (
@@ -12,7 +13,8 @@ function App() {
                 {/* <Home /> */}
                 {/* <SecondHome /> */}
                 {/* <ThirdHome /> */}
-                <FourthHome />
+                {/* <FourthHome /> */}
+                <FifthHome />
 
             </div>
         </div>
