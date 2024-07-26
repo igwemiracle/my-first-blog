@@ -15,9 +15,13 @@ const BlogList = ({ blogs, title }) => {
             {
                 blogs.map((blog) => (
                     <div className="blog_preview" key={blog.id}
-                        style={{ paddingTop: "30px", paddingLeft: "25px" }}>
+                        style={{
+                            paddingTop: "35px", paddingLeft: "25px", marginTop: "15px",
+                            backgroundColor: "#f2f2f2", borderRadius: "8px", paddingBottom: "15px",
+
+                        }}>
                         <h3 style={{ color: "#f1356d" }}> {blog.title}</h3>
-                        <p style={{ paddingTop: "4px" }}>Written By {blog.Author}</p>
+                        <p style={{ paddingTop: "10px", paddingLeft: "10px" }}>Written By {blog.Author}</p>
                     </div>
                 )
                 )
