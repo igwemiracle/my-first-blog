@@ -30,7 +30,7 @@ const useFetch = (url) => {
                 })
         }, (2000))
 
-    }, [url]) // We pass in the url as a dependency, so that whenever the url changes the function 
+    }, [url, data]) // We pass in the url as a dependency, so that whenever the url changes the function 
     // gets rerun
     return ({ data, isPending, error });
 }
