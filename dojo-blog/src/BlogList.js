@@ -18,7 +18,7 @@ const BlogList = ({ blogs, title }) => {
                     <div className="blog_preview" key={blog.id}
                         style={{
                             paddingTop: "35px", paddingLeft: "25px", marginTop: "15px",
-                            backgroundColor: "#f2f2f2", borderRadius: "8px", paddingBottom: "15px",
+                            backgroundColor: "#f2f2f2", borderRadius: "8px", paddingBottom: "15px"
                         }}>
                         <Link to={`/blogs/${blog.id}`} style={{
                             textDecoration: "none",

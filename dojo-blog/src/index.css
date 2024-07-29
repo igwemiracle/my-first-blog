@@ -40,4 +40,19 @@
     padding: 20px;
 }
 
+.blog_preview {
+  padding-top: 35px;
+  padding-left: 25px;
+  margin-top: 15px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  padding-bottom: 15px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.blog_preview:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 
