@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -10,9 +10,7 @@ const Navbar = () => {
                     color: "white",
                     backgroundColor: "#f1356d",
                     borderRadius: "8px",
-
                 }}>New Blog</Link>
-                <Link to="/about">About</Link>
 
 
             </div>

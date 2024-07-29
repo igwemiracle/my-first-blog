@@ -8,11 +8,12 @@ const useFetch = (url) => {
     const [error, setError] = useState(null);
     // This simply means only ever fire the function once on the initial render
     //  and not whenever the data changes.
+    // This is just to Simulate what it would feel like when your page has to load before the
+    //   data is displayed. This should not be practiced or used in a real time program.
     useEffect(() => {
-        // This is just to Simulate what it would feel like when your page has to load before the
-        //   data is displayed. This should not be practiced or used in a real time program.
+        const abortCont = new AbortController()
         setTimeout(() => {
-            fetch(url)
+            fetch(url, { signal: abortCont.signal })
                 .then(res => {
                     if (!res.ok) {
                         throw Error('could not fetch data for that resource');
@@ -25,12 +26,18 @@ const useFetch = (url) => {
                     setError(null)
                 })
                 .catch((err) => {
-                    setError(err.message)
-                    setIsPending(false)
-                })
-        }, (2000))
+                    if (err.name === 'AbortError') {
+                        console.log("fetch aborted")
+                    } else {
+                        setError(err.message)
+                        setIsPending(false)
+                    }
 
-    }, [url, data]) // We pass in the url as a dependency, so that whenever the url changes the function 
+                })
+        }, (1000))
+        return () => abortCont.abort();
+
+    }, [url]) // We pass in the url as a dependency, so that whenever the url changes the function 
     // gets rerun
     return ({ data, isPending, error });
 }

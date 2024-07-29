@@ -6,7 +6,8 @@ import Navbar from './Navbar';
 // import FifthHome from './05-Home';
 import SixthHome from './06-Home';
 import Create from './Create';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import BlogDetails from './BlogDetails';
 /**
  *    FIRST STEP to making use of the Router component:
  * We need to surround our whole application using the `Router` Component. And
@@ -25,17 +26,9 @@ function App() {
                 <Navbar />
                 <div className="content">
                     <Switch>
-                        <Route exact path="/">
-                            {/* <Home /> */}
-                            {/* <SecondHome /> */}
-                            {/* <ThirdHome /> */}
-                            {/* <FourthHome /> */}
-                            {/* <FifthHome /> */}
-                            <SixthHome />
-                        </Route>
-                        <Route path="/create">
-                            <Create />
-                        </Route>
+                        <Route path="/" exact component={SixthHome} />
+                        <Route path="/create" component={Create} />
+                        <Route path="/blogs/:id" component={BlogDetails} />
                     </Switch>
                 </div>
             </div>
