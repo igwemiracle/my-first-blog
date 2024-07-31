@@ -13,7 +13,7 @@ const Home = () => {
     //What happens when we want our button to print our name when we click it.
     // what happens when we want to pass a parameter to our function. For example;
 
-    const handleClickAgin = (name) => {
+    const handleClickAgain = (name) => {
         console.log("Welcome " + name + " to our Homepage!");
 
     }
@@ -24,7 +24,7 @@ const Home = () => {
             <button onClick={handleClick}>click me</button>
             <p>{name} is {age} years old</p>
             {/* We can only use a parameter when we wrap it in an Anonymous function  */}
-            <button onClick={() => { handleClickAgin("Victor") }}>clickMeAgain</button>
+            <button onClick={() => { handleClickAgain("Victor") }}>clickMeAgain</button>
 
         </div>
     );

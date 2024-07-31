@@ -14,7 +14,7 @@ const SixthHome = () => {
             {/*A conditional statement that logs the message in the div only if IsPending is true*/}
             {isPending && <div>Is Loading...</div>}
             {/* we render the BlogList once we have data, which is "blogs" */}
-            {blogs && <BlogList blogs={blogs} title="All Blogs!" />}
+            {blogs && <BlogList blogs={blogs} title="All Blogs" />}
             {/* This 👉 |<BlogList blogs={blogs} title="All Blogs!"| only works when
             `blogs` works  */}
 
