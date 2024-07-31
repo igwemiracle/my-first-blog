@@ -19,8 +19,8 @@
 .env.production.local
 .vscode
 
+dojo-blog/data
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 react-msg
-dojo-blog/data/db.json

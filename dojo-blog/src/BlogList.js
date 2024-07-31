@@ -9,9 +9,7 @@ const BlogList = ({ blogs, title }) => {
     // const handleDelete = props.handleDelete;
 
     return (
-        <div className="blog-list" style={{
-            marginBottom: "50px"
-        }}>
+        <div className="blog-list" style={{ marginBottom: "50px" }}>
             <h1>{title}</h1>
             {
                 blogs.map((blog) => (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 // How to implement controlled inputs: This is just a way of setting up input fields 
 // and forms in react so that we can track their values. And when users type into these input
@@ -8,11 +9,14 @@ const Create = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('Patience Jacob');
-    const [isPending, setIsPending] = useState(false); //This is set to false because when we first
+    const [isPending, setIsPending] = useState(false);
+    //This is set to false because when we first
     // Load the page we are not making the request straight away.
-
+    const history = useHistory();
+    // This allows us to go back and forward through the history of our browser page and also
+    //  add a new page to the history, in other words it helps in redirecting.
     const handleSubmit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         const blog = { title, body, author };
         setIsPending(true);
 
@@ -23,16 +27,16 @@ const Create = () => {
 
         }).then(() => {
             console.log("New Blog Added!")
-            setIsPending(false) // This is set to false since it has been completed.
+            setIsPending(false)
+            // This is set to false since it has been completed.
+            history.push('/')
         })
     }
 
     return (
         <div className="create">
             <h1>Add a New Blog</h1>
-            <div className="form-style" style={{
-                marginTop: "40px"
-            }}>
+            <div className="form-style" style={{ marginTop: "40px" }}>
                 {/* the form tag handles the submit event */}
                 <form onSubmit={handleSubmit}>
                     <label>Blog title:</label>
