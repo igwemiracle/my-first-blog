@@ -8,6 +8,7 @@ import SixthHome from './06-Home';
 import Create from './Create';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BlogDetails from './BlogDetails';
+import NotFound from './NotFound';
 /**
  *    FIRST STEP to making use of the Router component:
  * We need to surround our whole application using the `Router` Component. And
@@ -29,6 +30,7 @@ function App() {
                         <Route path="/" exact component={SixthHome} />
                         <Route path="/create" component={Create} />
                         <Route path="/blogs/:id" component={BlogDetails} />
+                        <Route path="*" component={NotFound} />
                     </Switch>
                 </div>
             </div>

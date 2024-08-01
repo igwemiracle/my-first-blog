@@ -116,3 +116,34 @@
     cursor: pointer;
     margin-top: 10px;
 }
+
+/* Styling for not-found */
+.not-found {
+  text-align: center; /* Center align text */
+  margin-top: 50px; /* Add margin to the top */
+}
+
+.not-found h2 {
+  font-size: 2em;
+  margin-bottom: 20px; /* Space between h2 and p */
+}
+
+.not-found p {
+  font-size: 1.2em;
+  margin-bottom: 30px; /* Space between p and Link */
+}
+
+.not-found a {
+  display: inline-block; /* Allow padding and margin to apply */
+  padding: 10px 20px; /* Add padding inside the link */
+  margin-top: 20px; /* Add margin to position the link */
+  background-color: #f1356d; /* Background color for the button */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth color transition */
+}
+
+.not-found a:hover {
+  background-color: #c02856; /* Darker background on hover */
+}
