@@ -8,7 +8,9 @@ import { useHistory } from "react-router-dom";
 const Create = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
-    const [author, setAuthor] = useState('Patience Jacob');
+    // const [author, setAuthor] = useState('Patience Jacob');
+    const [author, setAuthor] = useState('');
+
     const [isPending, setIsPending] = useState(false);
     //This is set to false because when we first
     // Load the page we are not making the request straight away.
@@ -17,7 +19,12 @@ const Create = () => {
     //  add a new page to the history, in other words it helps in redirecting.
     const handleSubmit = (e) => {
         e.preventDefault();
-        const blog = { title, body, author };
+        const date = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        });
+        const blog = { title, body, author, date };
         setIsPending(true);
 
         fetch('http://localhost:8000/blogs', {
@@ -53,12 +60,17 @@ const Create = () => {
                         onChange={(e) => setBody(e.target.value)}
                     ></textarea>
                     <label>Blog author:</label>
-                    <select
+                    <input
+                        type="text"
+                        required
+                        value={author}
+                        onChange={(e) => setAuthor(e.target.value)} />
+                    {/* <select
                         value={author}
                         onChange={(e) => setAuthor(e.target.value)}>
                         <option value="Patience Jacob">Patience Jacob</option>
                         <option value="scott McClean">scott McClean</option>
-                    </select>
+                    </select> */}
                     {!isPending && <button>Add Blog</button>}
                     {isPending && <button disabled>Adding blog...</button>}
                 </form>

@@ -1,12 +1,22 @@
 // How to make a component take in props-data and use that data inside that component.
 // In other words, we can also make it to be reuseable.
 import { Link } from "react-router-dom";
-
+import icon from './comment-icon.png';
 const BlogList = ({ blogs, title }) => {
-    //     The three props can be passed as parameters in curly braces to the BlogList function
-    // const blogs = props.blogs;
-    // const title = props.title;
-    // const handleDelete = props.handleDelete;
+
+    // const addDate = {
+    //     date: new Date().toLocaleDateString('en-US', {
+    //         year: 'numeric',
+    //         month: 'long',
+    //         day: 'numeric'
+    //     }),
+    // };
+    const truncate = (str, num) => {
+        if (str.length <= num) {
+            return str;
+        }
+        return str.slice(0, num) + "...";
+    };
 
     return (
         <div className="blog-list" style={{ marginBottom: "50px" }}>
@@ -14,13 +24,17 @@ const BlogList = ({ blogs, title }) => {
             {
                 blogs.map((blog) => (
                     <div className="blog_preview" key={blog.id}>
-                        <Link to={`/blogs/${blog.id}`}>
-                            <h3 style={{ color: "#f1356d" }}> {blog.title}</h3>
-                            <p style={{
-                                paddingTop: "10px",
-                                paddingLeft: "10px"
-                            }}>Written By {blog.author}</p>
-                        </Link>
+                        <div>
+                            <h3> {blog.title}</h3>
+                            <p>{truncate(blog.body, 70)}</p>
+                            <Link to={`/blogs/${blog.id}`} className="read-more-link">Read More</Link>
+                            <div className="container">
+                                <p className="text">Published on {blog.date}</p>
+                                <Link to={'/comment'}>
+                                    <img src={icon} alt="icon-notShowing" className="icon" />
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 )
                 )

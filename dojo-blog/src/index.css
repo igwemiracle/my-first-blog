@@ -40,7 +40,8 @@
     margin: 40px auto;
     padding: 20px;
 }
-
+/*====================================================================*/
+/* Styling for blog review */
 .blog_preview {
   padding-top: 35px;
   padding-left: 25px;
@@ -52,12 +53,46 @@
 }
 
 .blog_preview a {
-    text-decoration: none;
+    margin-top: 10px;
+    /* text-decoration: none;
+    background-color: #f1356d;
+    color: #fff;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px; */
 }
 
 .blog_preview:hover {
   transform: scale(1.05);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+/*====================================================================*/
+
+/* Styling for blog list */
+.blog-list p {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.blog-list h3 {
+    color: #f1356d;
+}
+
+.blog-list button {
+    background-color: #f1356d;
+    color: #fff;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.blog-list button:hover {
+    background-color: #c02856;
 }
 
 /* blog-details page */
@@ -134,14 +169,14 @@
 }
 
 .not-found a {
-  display: inline-block; /* Allow padding and margin to apply */
-  padding: 10px 20px; /* Add padding inside the link */
-  margin-top: 20px; /* Add margin to position the link */
-  background-color: #f1356d; /* Background color for the button */
-  color: white; /* Text color */
-  text-decoration: none; /* Remove underline */
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s; /* Smooth color transition */
+  display: inline-block; 
+  padding: 10px 20px;
+  margin-top: 20px; 
+  background-color: #f1356d;
+  color: white; 
+  text-decoration: none;
+  border-radius: 5px; 
+  transition: background-color 0.3s;
 }
 
 .not-found a:hover {

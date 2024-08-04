@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.text {
+  margin: 0; /* Remove default margin from paragraph */
+  margin-right: 8px; /* Optional: Space between text and icon */
+  font-size: 16px; /* Example font size */
+}
+
+.icon {
+  width: 25px; 
+  height: 25px;
+  margin-left: 100px;
+}
+
+.read-more-link {
+  display: inline-block; /* Allows margin and padding adjustments */
+  margin-top: 10px; /* Pushes the link down from the paragraph */
+  font-size: 16px; /* Adjust font size as needed */
+  color: #fff; /* Link color */
+  text-decoration: none; /* Removes the underline */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+   background-color: #f1356d;
+   border: 0;
+   padding: 8px;
+   border-radius: 8px;
+   cursor: pointer;
+}
+
+.read-more-link:hover {
+    color: #fff;
+    background-color: #c02856;
+}
+

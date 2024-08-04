@@ -7,7 +7,7 @@ const useFetch = (url) => {
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
     // The `useEffect` Hook simply means only ever fire the function inside of it once,
-    // on the initial renderand not whenever the data changes.
+    // on the initial render and not whenever the data changes.
     // The 'isPending' useState is to Simulate what it would feel like when your page
     // has to load before the data is displayed. This should not be practiced or used in a real time program.  
     useEffect(() => {

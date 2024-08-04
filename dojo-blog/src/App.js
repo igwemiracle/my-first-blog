@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 // import FifthHome from './05-Home';
 import SixthHome from './06-Home';
 import Create from './Create';
+import Comments from './Comment';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
@@ -30,6 +31,8 @@ function App() {
                         <Route path="/" exact component={SixthHome} />
                         <Route path="/create" component={Create} />
                         <Route path="/blogs/:id" component={BlogDetails} />
+                        <Route path="/comment" component={Comments} />
+
                         <Route path="*" component={NotFound} />
                     </Switch>
                 </div>
