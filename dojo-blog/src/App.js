@@ -1,15 +1,13 @@
 import React from 'react';
-import Navbar from './Navbar';
+import Navbar from './components/Navbar';
 import HomePage from './06-Home';
-import Blogs from './Blogs';
-import Create from './Create';
-import Comments from './Comment';
+import Blogs from './components/Blogs';
+import Create from './components/Create';
+import Comments from './components/Comment';
 import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
-import BlogDetails from './BlogDetails';
-import NotFound from './NotFound';
-import backgroundImage from './back-img.jpg';
-
-
+// import BlogDetails from './components/BlogDetails';
+import NotFound from './components/NotFound';
+import backgroundImage from './assets/back-img.jpg';
 /**
  *    FIRST STEP to making use of the Router component:
  * We need to surround our whole application using the `Router` Component. And
@@ -39,18 +37,20 @@ const Main = () => {
         backgroundPosition: 'center',
         height: '100vh',
         color: 'white',
-        padding: '20px'
+        padding: '20px',
     };
 
     return (
         <div style={isHomePage ? homePageStyle : {}} className="app">
             <Navbar />
             <div className="content">
+                <div className="overlay"></div>
+
                 <Switch>
                     <Route path="/" exact component={HomePage} />
                     <Route path="/blogs" exact component={Blogs} />
                     <Route path="/create" component={Create} />
-                    <Route path="/blogs/:id" component={BlogDetails} />
+                    {/* <Route path="/blogs/:id" component={BlogDetails} /> */}
                     <Route path="/comment" component={Comments} />
                     <Route path="*" component={NotFound} />
                 </Switch>

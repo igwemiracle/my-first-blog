@@ -8,15 +8,6 @@
     font-weight:lighter;
 }
 
-.app.homepage {
-    background-image: url('./back-img.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    color: white;
-    padding: 20px;
-}
-
 
 .navbar {
     padding: 20px;
@@ -56,29 +47,38 @@
   padding-top: 35px;
   padding-left: 25px;
   margin-top: 15px;
-  /* background-color: #f2f2f27b; */
   border-radius: 8px;
   padding-bottom: 15px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  position: relative;
 }
 
 .blog_preview a {
-    margin-top: 10px;
-    /* text-decoration: none;
-    background-color: #f1356d;
-    color: #fff;
-    border: 0;
-    padding: 8px;
-    border-radius: 8px;
-    cursor: pointer;
-    display: inline-block;
-    margin-top: 10px; */
+  margin-top: 10px;
 }
 
 .blog_preview:hover {
   transform: scale(1.05);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.icon-link {
+  position: absolute;
+  top: 80%;
+  right: 25px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.icon-link + .icon-link { /* This targets the second icon-link */
+  right: 100px; /* Adjust the right property to position the second icon */
+}
+
+.blog_preview:hover .icon-link {
+  opacity: 1;
+}
+
 /*====================================================================*/
 
 /* Styling for blog list */

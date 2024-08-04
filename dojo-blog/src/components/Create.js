@@ -36,7 +36,7 @@ const Create = () => {
             console.log("New Blog Added!")
             setIsPending(false)
             // This is set to false since it has been completed.
-            history.push('/')
+            history.push('/blogs')
         })
     }
 
@@ -65,12 +65,6 @@ const Create = () => {
                         required
                         value={author}
                         onChange={(e) => setAuthor(e.target.value)} />
-                    {/* <select
-                        value={author}
-                        onChange={(e) => setAuthor(e.target.value)}>
-                        <option value="Patience Jacob">Patience Jacob</option>
-                        <option value="scott McClean">scott McClean</option>
-                    </select> */}
                     {!isPending && <button>Add Blog</button>}
                     {isPending && <button disabled>Adding blog...</button>}
                 </form>
