@@ -5,7 +5,7 @@ import Blogs from './components/Blogs';
 import Create from './components/Create';
 import Comments from './components/Comment';
 import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
-// import BlogDetails from './components/BlogDetails';
+import BlogDetails from './components/BlogDetails';
 import NotFound from './components/NotFound';
 import backgroundImage from './assets/back-img.jpg';
 /**
@@ -50,7 +50,7 @@ const Main = () => {
                     <Route path="/" exact component={HomePage} />
                     <Route path="/blogs" exact component={Blogs} />
                     <Route path="/create" component={Create} />
-                    {/* <Route path="/blogs/:id" component={BlogDetails} /> */}
+                    <Route path="/blogs/:id" component={BlogDetails} />
                     <Route path="/comment" component={Comments} />
                     <Route path="*" component={NotFound} />
                 </Switch>
