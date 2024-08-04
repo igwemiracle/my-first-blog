@@ -8,6 +8,16 @@
     font-weight:lighter;
 }
 
+.app.homepage {
+    background-image: url('./back-img.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    padding: 20px;
+}
+
+
 .navbar {
     padding: 20px;
     display: flex;

@@ -34,3 +34,38 @@
     background-color: #c02856;
 }
 
+
+.header-container-inner {
+    width: 50%;
+
+}
+
+.header-container {
+    width: 1200px;
+    position: absolute;
+
+    /* In relation to parent size*/
+    left: 50%;
+    top: 50%;
+
+    /* In relation to the ELEMENT size*/
+    transform: translate(-50%, -50%);
+
+}
+.btn:link,
+.btn:visited {
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #f1356d;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 16px 32px;
+    border-radius: 9px;
+    margin-top: 50px;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: #c02856;
+}

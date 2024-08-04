@@ -4,13 +4,6 @@ import { Link } from "react-router-dom";
 import icon from './comment-icon.png';
 const BlogList = ({ blogs, title }) => {
 
-    // const addDate = {
-    //     date: new Date().toLocaleDateString('en-US', {
-    //         year: 'numeric',
-    //         month: 'long',
-    //         day: 'numeric'
-    //     }),
-    // };
     const truncate = (str, num) => {
         if (str.length <= num) {
             return str;
