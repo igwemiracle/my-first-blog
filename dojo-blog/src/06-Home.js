@@ -15,7 +15,7 @@ const HomePage = () => {
             </header>
             <div class="horizontal-line">
                 <Link to="/" className="home-link">Help</Link>
-                <Link to="/" className="home-link">Status</Link>
+                <Link to="/story" className="home-link">Our story</Link>
                 <Link to="/" className="home-link">Terms</Link>
                 <Link to="/" className="home-link">Privacy</Link>
             </div>

@@ -18,6 +18,13 @@
     border-bottom: 1px solid #f2f2f2;
 }
 
+.nav-icon {
+    width: 40px; 
+    height: 33px;
+    margin-right: 10px;
+    filter: invert(42%) sepia(59%) saturate(4258%) hue-rotate(323deg) brightness(95%) contrast(93%)
+}
+
 .navbar h1 {
     color: #f1356d;
 }

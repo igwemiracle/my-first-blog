@@ -8,7 +8,9 @@ import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-route
 import BlogDetails from './components/BlogDetails';
 import NotFound from './components/NotFound';
 import OurStory from './components/OurStory';
-import backgroundImage from './assets/back-img.jpg';
+import backgroundImage from './assets/images/back-img3.jpg';
+import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
 /**
  *    FIRST STEP to making use of the Router component:
  * We need to surround our whole application using the `Router` Component. And
@@ -39,7 +41,7 @@ const Main = () => {
         height: '100vh',
         // color: 'white',
         // padding: '20px',
-        filter: "brightness(0.9)",
+        filter: "brightness(0.75)",
     };
 
     return (
@@ -55,6 +57,8 @@ const Main = () => {
                     <Route path="/story" component={OurStory} />
                     <Route path="/blogs/:id" component={BlogDetails} />
                     <Route path="/comment" component={Comments} />
+                    <Route path="/signin" component={SignIn} />
+                    <Route path="/signup" component={SignUp} />
                     <Route path="*" component={NotFound} />
                 </Switch>
             </div>

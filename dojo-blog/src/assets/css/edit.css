@@ -93,6 +93,16 @@
     
   }
 
+
+aside {
+    text-align: left; 
+    margin: 0;        
+    padding: 0;       
+    width: 100%;     
+    max-width: 800px;
+    font-style: italic;
+}
+
 .aside-h1 {
     font-size: 60px;
     color: #f1356d;
@@ -101,31 +111,9 @@
     font-size: 20px;
 }
 
-aside {
-  width: 130%;
-  /* padding-left: 15px; */
-  margin-left: 15px;
-  float: left;
-  font-style: italic;
-  /* background-color: lightgray; */
-  margin-top: 10px;
-  margin-bottom: 40px;
-}
-
-aside .p1 {
+aside .p1, .p2, .p3, .p4 {
     font-size: 20px;
 }
-aside .p2 {
-    margin-top: 15px;
-    font-size: 20px;
-}
-
-aside .p3 {
-    margin-top: 15px;
-    font-size: 20px;
-}
-
-aside .p4 {
-    margin-top: 15px;
-    font-size: 20px;
+aside .p2, .p3, .p4 {
+    margin-top: 5px;
 }
