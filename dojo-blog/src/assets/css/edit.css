@@ -53,17 +53,6 @@
 
 }
 
-/* .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.127);
-    pointer-events: none; 
-} */
-
-
 
 .btn:link,
 .btn:visited {
@@ -81,4 +70,62 @@
 .btn:hover {
     color: #fff;
     background-color: #c02856;
+}
+
+  .horizontal-line {
+    border-top: 1px solid #f2f2f2; /* Border color and thickness */
+    position: fixed; /* Fix the position at the bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding-top: 35px;
+    margin-bottom: 20px;
+   
+}
+
+  .horizontal-line a {
+    color: #f2f2f2;
+    color: #f1356d;
+    padding-left: 30px;
+    font-size: large;
+    
+    
+  }
+
+.aside-h1 {
+    font-size: 60px;
+    color: #f1356d;
+}
+.aside-h2 {
+    font-size: 20px;
+}
+
+aside {
+  width: 130%;
+  /* padding-left: 15px; */
+  margin-left: 15px;
+  float: left;
+  font-style: italic;
+  /* background-color: lightgray; */
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+aside .p1 {
+    font-size: 20px;
+}
+aside .p2 {
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+aside .p3 {
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+aside .p4 {
+    margin-top: 15px;
+    font-size: 20px;
 }

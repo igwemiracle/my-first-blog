@@ -7,6 +7,7 @@ import Comments from './components/Comment';
 import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 import BlogDetails from './components/BlogDetails';
 import NotFound from './components/NotFound';
+import OurStory from './components/OurStory';
 import backgroundImage from './assets/back-img.jpg';
 /**
  *    FIRST STEP to making use of the Router component:
@@ -34,22 +35,24 @@ const Main = () => {
     const homePageStyle = {
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        // backgroundPosition: 'center',
         height: '100vh',
-        color: 'white',
-        padding: '20px',
+        // color: 'white',
+        // padding: '20px',
+        filter: "brightness(0.9)",
     };
 
     return (
         <div style={isHomePage ? homePageStyle : {}} className="app">
             <Navbar />
             <div className="content">
-                <div className="overlay"></div>
+
 
                 <Switch>
                     <Route path="/" exact component={HomePage} />
                     <Route path="/blogs" exact component={Blogs} />
                     <Route path="/create" component={Create} />
+                    <Route path="/story" component={OurStory} />
                     <Route path="/blogs/:id" component={BlogDetails} />
                     <Route path="/comment" component={Comments} />
                     <Route path="*" component={NotFound} />
