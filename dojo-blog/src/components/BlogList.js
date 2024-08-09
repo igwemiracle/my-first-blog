@@ -4,6 +4,8 @@ import { Link, useHistory } from "react-router-dom";
 import icon from '../assets/icons/comment-icon.png';
 import anotherIcon from '../assets/icons/delete-icon2.png';
 import { handleDelete } from './utils';
+
+
 const BlogList = ({ blogs, title }) => {
     const history = useHistory();
 

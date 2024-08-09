@@ -14,10 +14,10 @@ const HomePage = () => {
                 </div>
             </header>
             <div class="horizontal-line">
-                <Link to="/" className="home-link">Help</Link>
-                <Link to="/story" className="home-link">Our story</Link>
-                <Link to="/" className="home-link">Terms</Link>
-                <Link to="/" className="home-link">Privacy</Link>
+                <Link to="/" className="horizontal-line-link">Help</Link>
+                <Link to="/story" className="horizontal-line-link">Our story</Link>
+                <Link to="/" className="horizontal-line-link">Terms</Link>
+                <Link to="/" className="horizontal-line-link">Privacy</Link>
             </div>
         </div>
 

@@ -11,6 +11,7 @@ import OurStory from './components/OurStory';
 import backgroundImage from './assets/images/back-img3.jpg';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import AccoutPage from './components/Account';
 /**
  *    FIRST STEP to making use of the Router component:
  * We need to surround our whole application using the `Router` Component. And
@@ -54,11 +55,13 @@ const Main = () => {
                     <Route path="/" exact component={HomePage} />
                     <Route path="/blogs" exact component={Blogs} />
                     <Route path="/create" component={Create} />
+                    <Route path="/account" component={AccoutPage} />
+                    <Route path="/signin" component={SignIn} />
+                    <Route exact path="/auth/register" component={SignUp} />
                     <Route path="/story" component={OurStory} />
                     <Route path="/blogs/:id" component={BlogDetails} />
                     <Route path="/comment" component={Comments} />
-                    <Route path="/signin" component={SignIn} />
-                    <Route path="/signup" component={SignUp} />
+
                     <Route path="*" component={NotFound} />
                 </Switch>
             </div>

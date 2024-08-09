@@ -72,7 +72,7 @@
     background-color: #c02856;
 }
 
-  .horizontal-line {
+.horizontal-line {
     border-top: 1px solid #f2f2f2; /* Border color and thickness */
     position: fixed; /* Fix the position at the bottom */
     bottom: 0;
@@ -84,15 +84,17 @@
    
 }
 
-  .horizontal-line a {
-    color: #f2f2f2;
-    color: #f1356d;
+.horizontal-line a {
+    text-decoration: none;
+    /* color: #f2f2f2; */
+    /* color: #f1356d; */
     padding-left: 30px;
     font-size: large;
-    
-    
-  }
+    }
 
+.horizontal-line a:hover {
+    color: #f1356d;
+}
 
 aside {
     text-align: left; 
@@ -116,4 +118,42 @@ aside .p1, .p2, .p3, .p4 {
 }
 aside .p2, .p3, .p4 {
     margin-top: 5px;
+}
+
+
+/* sign-up new blog form */
+.sign-up {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sign-up label {
+    text-align: left;
+    display: block;
+}
+
+.sign-up h2 {
+    font-size: 20px;
+    color: #f1356d;
+    margin-bottom: 30px;
+}
+
+.sign-up input {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: block;
+}
+
+.sign-up button {
+    background-color: #f1356d;
+    color: #fff;
+    border: 0;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
 }
