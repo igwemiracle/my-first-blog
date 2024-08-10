@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const SignIn = () => {
     const [username, setUserName] = useState('');
-    // const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const [isPending, setIsPending] = useState(false);
@@ -18,32 +18,37 @@ const SignIn = () => {
             const response = await fetch("http://localhost:8000/auth/login", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Content-Type": "application/json",
                 },
-                body: new URLSearchParams({
+                body: JSON.stringify({
                     username: username,
-                    // email: email,
                     password: password,
                 }),
             });
 
-            if (response.redirected) {
-                history.push(response.url);
-            } else {
+            if (response.status === 200 || response.status === 201) {
+                // Handle success - for example, redirect to the account page
                 const data = await response.json();
-                setError(data.error_message || "Registration failed.");
+                history.push(encodeURI(data.redirect_url));  // Redirect to the account page
+            } else {
+                // Handle errors
+                const data = await response.json();
+                console.log(data)
+                setError(data.error_message || "Login failed.");
             }
         } catch (err) {
+            console.log("======", err);
             setError("An unexpected error occurred.");
         } finally {
             setIsPending(false);
         }
     };
 
+
     return (
         <div className="sign-up">
-            <h1>Login User</h1>
-            <div className="edit-sign" style={{ marginTop: "40px" }}>
+            <h1>Login New User</h1>
+            <div style={{ marginTop: "40px" }}>
                 <form onSubmit={handleSubmit}>
                     <label>Username:</label>
                     <input
@@ -53,13 +58,6 @@ const SignIn = () => {
                         value={username}
                         onChange={(e) => setUserName(e.target.value)}
                     />
-                    {/* <label>Email:</label>
-                    <input
-                        type="email"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    /> */}
                     <label>Password:</label>
                     <input
                         name="password"
@@ -69,9 +67,14 @@ const SignIn = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     {error && <p style={{ color: "red" }}>{error}</p>}
-                    {!isPending && <button type="submit">Sign in</button>}
-                    {isPending && <button disabled>Signing up...</button>}
+                    {!isPending && <button type="submit">Login</button>}
+                    {isPending && <button disabled>Signing in...</button>}
+
                 </form>
+            </div>
+            <div className="signin-link-container">
+                <Link to="/" className="signin-link">forgot password?</Link>
+                <Link to="/auth/register" className="signin-link">don't have an account? sign up</Link>
             </div>
         </div>
     );

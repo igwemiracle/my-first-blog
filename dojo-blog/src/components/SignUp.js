@@ -14,6 +14,7 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsPending(true);
+        setError(null);
 
         try {
             const response = await fetch("http://localhost:8000/auth/register", {
@@ -22,27 +23,34 @@ const SignUp = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    username: username,
-                    email: email,
-                    password: password,
+                    username: username, email: email, password: password,
                     confirm_password: confirmPassword,
                 }),
             });
 
-            if (response.status === 201) {
-                // Handle success - for example, redirect to the account page
-                const data = await response.json();
-                history.push(data.redirect_url);  // Redirect to the account page
-            } else {
-                // Handle errors
-                const data = await response.json();
-                setError(data.error_message || "Registration failed.");
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error_message || "An unknown error occurred")
             }
+
+            // Check if the response is JSON before parsing
+            const contentType = response.headers.get("content-type");
+            let data;
+            if (contentType && contentType.includes("application/json")) {
+                data = await response.json();
+                history.push(data.redirect_url);
+            } else {
+                throw new Error("Response is not JSON");
+            }
+            // Handle the data returned from the backend
+            return data;
+
         } catch (err) {
-            setError("An unexpected error occurred.");
+            setError(err.message);
         } finally {
             setIsPending(false);
         }
+
     };
 
 

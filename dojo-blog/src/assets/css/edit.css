@@ -157,3 +157,18 @@ aside .p2, .p3, .p4 {
     cursor: pointer;
     margin-top: 10px;
 }
+
+.signin-link-container {
+    display: flex;
+    flex-direction: column; /* Ensures links are stacked vertically */
+    margin-top: 10px;
+}
+
+.signin-link {
+    margin-bottom: 10px; /* Adds space between links */
+    text-decoration: none; /* Removes underline from links */
+}
+
+.signin-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}

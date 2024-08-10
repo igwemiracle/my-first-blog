@@ -56,7 +56,7 @@ const Main = () => {
                     <Route path="/blogs" exact component={Blogs} />
                     <Route path="/create" component={Create} />
                     <Route path="/account" component={AccoutPage} />
-                    <Route path="/signin" component={SignIn} />
+                    <Route path="/auth/login" component={SignIn} />
                     <Route exact path="/auth/register" component={SignUp} />
                     <Route path="/story" component={OurStory} />
                     <Route path="/blogs/:id" component={BlogDetails} />
