@@ -21,6 +21,11 @@ async def findUserExist(email: str, db: AsyncSession = Depends(get_db)):
     result = await db.execute(query)
     return result.scalar()
 
+async def findUserExistWithUserName(username: str, db: AsyncSession = Depends(get_db)):
+    query = select(User).where(User.username == username)
+    result = await db.execute(query)
+    return result.scalar()
+
 # async def createResetCode(email:str, reset_code:str, db:AsyncSession=Depends(get_db)):
 #     query = insert(ResetCode).values(
 #         email=email,
