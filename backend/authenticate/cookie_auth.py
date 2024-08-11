@@ -7,7 +7,7 @@ from fastapi import Response
 from authenticate.num_converter import try_int
 
 
-auth_cookie_name = 'user_account'
+auth_cookie_name = 'user_blog'
 
 
 def set_auth(response: Response, user_id):
@@ -19,7 +19,7 @@ def set_auth(response: Response, user_id):
 
 
 def __hash_pwd(text: str) -> str:
-    text = "salty__" + text + "__text"
+    text = "miracle__" + text + "__blog"
     return hashlib.sha512(text.encode("utf-8")).hexdigest()
 
 

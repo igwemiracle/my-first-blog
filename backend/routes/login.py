@@ -1,6 +1,6 @@
 import asyncio
 from fastapi import Depends, APIRouter, status
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from authenticate.hash_pwd import HashPassword
 from authenticate import cookie_auth
@@ -53,8 +53,8 @@ async def LoginUser(
 
 @login.get("/auth/logout")
 async def renderLogoutPage():
-    response = JSONResponse(
-        url="/", status_code=status.HTTP_302_FOUND
+    response = RedirectResponse(
+        url="/", status_code=status.HTTP_200_OK
     )
     cookie_auth.logout(response)
     return response
