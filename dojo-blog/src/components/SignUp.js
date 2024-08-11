@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
     const [username, setUserName] = useState('');
@@ -9,7 +9,7 @@ const SignUp = () => {
 
     const [isPending, setIsPending] = useState(false);
     const [error, setError] = useState("");
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,7 +38,7 @@ const SignUp = () => {
             let data;
             if (contentType && contentType.includes("application/json")) {
                 data = await response.json();
-                history.push(data.redirect_url);
+                navigate(data.redirect_url);
             } else {
                 throw new Error("Response is not JSON");
             }

@@ -1,13 +1,13 @@
 // How to make a component take in props-data and use that data inside that component.
 // In other words, we can also make it to be reuseable.
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import icon from '../assets/icons/comment-icon.png';
 import anotherIcon from '../assets/icons/delete-icon2.png';
 import { handleDelete } from './utils';
 
 
 const BlogList = ({ blogs, title }) => {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const truncate = (str, num) => {
         if (str.length <= num) {
@@ -34,7 +34,7 @@ const BlogList = ({ blogs, title }) => {
                             <img src={icon} alt="icon-notShowing" className="icon" />
                         </Link>
                         <Link to={'/'} className="icon-link">
-                            <img src={anotherIcon} alt="icon-notShowing" className="icon" onClick={() => handleDelete(blog.id, history)} />
+                            <img src={anotherIcon} alt="icon-notShowing" className="icon" onClick={() => handleDelete(blog.id, navigate)} />
                         </Link>
                     </div>
                 </div>

@@ -1,17 +1,17 @@
 import React from 'react';
+import { BrowserRouter as Router, useLocation, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './06-Home';
 import Blogs from './components/Blogs';
 import Create from './components/Create';
 import Comments from './components/Comment';
-import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 import BlogDetails from './components/BlogDetails';
 import NotFound from './components/NotFound';
 import OurStory from './components/OurStory';
 import backgroundImage from './assets/images/back-img3.jpg';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import AccoutPage from './components/Account';
+import AccountPage from './components/Account';
 /**
  *    FIRST STEP to making use of the Router component:
  * We need to surround our whole application using the `Router` Component. And
@@ -38,10 +38,7 @@ const Main = () => {
     const homePageStyle = {
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
-        // backgroundPosition: 'center',
         height: '100vh',
-        // color: 'white',
-        // padding: '20px',
         filter: "brightness(0.75)",
     };
 
@@ -49,21 +46,18 @@ const Main = () => {
         <div style={isHomePage ? homePageStyle : {}} className="app">
             <Navbar />
             <div className="content">
-
-
-                <Switch>
-                    <Route path="/" exact component={HomePage} />
-                    <Route path="/blogs" exact component={Blogs} />
-                    <Route path="/create" component={Create} />
-                    <Route path="/account" component={AccoutPage} />
-                    <Route path="/auth/login" component={SignIn} />
-                    <Route exact path="/auth/register" component={SignUp} />
-                    <Route path="/story" component={OurStory} />
-                    <Route path="/blogs/:id" component={BlogDetails} />
-                    <Route path="/comment" component={Comments} />
-
-                    <Route path="*" component={NotFound} />
-                </Switch>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/blogs" element={<Blogs />} />
+                    <Route path="/create" element={<Create />} />
+                    <Route path="/account" element={<AccountPage />} />
+                    <Route path="/auth/login" element={<SignIn />} />
+                    <Route path="/auth/register" element={<SignUp />} />
+                    <Route path="/story" element={<OurStory />} />
+                    <Route path="/blogs/:id" element={<BlogDetails />} />
+                    <Route path="/comment" element={<Comments />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
             </div>
         </div>
     );

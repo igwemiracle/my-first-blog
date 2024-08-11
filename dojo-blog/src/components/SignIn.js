@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom/";
 
 const SignIn = () => {
     const [username, setUserName] = useState('');
@@ -8,7 +8,7 @@ const SignIn = () => {
 
     const [isPending, setIsPending] = useState(false);
     const [error, setError] = useState("");
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,7 +29,10 @@ const SignIn = () => {
             if (response.status === 200 || response.status === 201) {
                 // Handle success - for example, redirect to the account page
                 const data = await response.json();
-                history.push(encodeURI(data.redirect_url));  // Redirect to the account page
+                // Store the username in localStorage
+                localStorage.setItem('username', username);
+                console.log('Redirecting to:', data.redirect_url);
+                navigate(encodeURI(data.redirect_url));  // Redirect to the account page
             } else {
                 // Handle errors
                 const data = await response.json();
@@ -37,7 +40,6 @@ const SignIn = () => {
                 setError(data.error_message || "Login failed.");
             }
         } catch (err) {
-            console.log("======", err);
             setError("An unexpected error occurred.");
         } finally {
             setIsPending(false);
@@ -68,7 +70,7 @@ const SignIn = () => {
                     />
                     {error && <p style={{ color: "red" }}>{error}</p>}
                     {!isPending && <button type="submit">Login</button>}
-                    {isPending && <button disabled>Signing in...</button>}
+                    {isPending && <button disabled>Logging in...</button>}
 
                 </form>
             </div>

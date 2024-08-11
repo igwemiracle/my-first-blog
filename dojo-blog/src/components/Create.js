@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // How to implement controlled inputs: This is just a way of setting up input fields 
 // and forms in react so that we can track their values. And when users type into these input
@@ -14,7 +14,7 @@ const Create = () => {
     const [isPending, setIsPending] = useState(false);
     //This is set to false because when we first
     // Load the page we are not making the request straight away.
-    const history = useHistory();
+    const navigate = useNavigate();
     // This allows us to go back and forward through the history of our browser page and also
     //  add a new page to the history, in other words it helps in redirecting.
     const handleSubmit = (e) => {
@@ -36,7 +36,7 @@ const Create = () => {
             console.log("New Blog Added!")
             setIsPending(false)
             // This is set to false since it has been completed.
-            history.push('/blogs')
+            navigate('/blogs')
         })
     }
 
