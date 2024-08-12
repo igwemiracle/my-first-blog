@@ -75,8 +75,9 @@ const SignIn = () => {
                 </form>
             </div>
             <div className="signin-link-container">
-                <Link to="/" className="signin-link">forgot password?</Link>
+                <Link to="/auth/forgot_password" className="signin-link">forgot password?</Link>
                 <Link to="/auth/register" className="signin-link">don't have an account? sign up</Link>
+                {/* <Link to="/auth/register" className="signin-link">sign up</Link> */}
             </div>
         </div>
     );

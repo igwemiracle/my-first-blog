@@ -1,10 +1,12 @@
-import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom/";
 
 const AccountPage = () => {
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const username = queryParams.get('username');
+    // const location = useLocation();
+    // const queryParams = new URLSearchParams(location.search);
+    // const username = queryParams.get('username');
+    // WITH THE USE OF THE COMMENTED CODE ABOVE, WHEN THE USER SUCCESSFULLY LOGS IN OR REGISTERS
+    // THE USERNAME IS RETRIEVED FROM THE QUERY PARAMETER IN THE URL ("location.search") 
+    const username = localStorage.getItem('username');
 
     return (
         <div className="account">

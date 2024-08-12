@@ -12,6 +12,8 @@ import backgroundImage from './assets/images/back-img3.jpg';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import AccountPage from './components/Account';
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
 /**
  *    FIRST STEP to making use of the Router component:
  * We need to surround our whole application using the `Router` Component. And
@@ -54,6 +56,8 @@ const Main = () => {
                     <Route path="/auth/login" element={<SignIn />} />
                     <Route path="/auth/register" element={<SignUp />} />
                     <Route path="/story" element={<OurStory />} />
+                    <Route path="/auth/forgot_password" element={<ForgotPassword />} />
+                    <Route path="/auth/reset_password" element={<ResetPassword />} />
                     <Route path="/blogs/:id" element={<BlogDetails />} />
                     <Route path="/comment" element={<Comments />} />
                     <Route path="*" element={<NotFound />} />

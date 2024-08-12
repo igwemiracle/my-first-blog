@@ -15,7 +15,7 @@
     align-items: center;
     max-width: 600px;
     margin: 0 auto;
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: 1px solid white;
 }
 
 .nav-icon {
@@ -228,4 +228,61 @@
 
 .account-link:hover {
   background-color:#c02856
+}
+
+
+.forgot-pass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    background-color: #f0f0f5;
+}
+
+.forgot-pass-main {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin-bottom: 200px; /* Adjust this value to move the container further down */
+}
+
+
+.forgot-pass-h2 {
+    color: #333; /* Dark grey for the heading */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.forgot-pass-p {
+    color: #555; /* Medium grey for the paragraph */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.forgot-pass-submit {
+    width: 100%; /* Full-width button */
+    padding: 10px;
+    background-color: #f1356d; /* Submit button color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.forgot-pass-submit:hover {
+    background-color: #e0245e; /* Darker shade on hover */
 }

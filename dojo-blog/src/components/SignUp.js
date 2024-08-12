@@ -38,6 +38,9 @@ const SignUp = () => {
             let data;
             if (contentType && contentType.includes("application/json")) {
                 data = await response.json();
+                // Store the username in localStorage
+                localStorage.setItem("username", username);
+                //redirect or navigate to the account page
                 navigate(data.redirect_url);
             } else {
                 throw new Error("Response is not JSON");
