@@ -4,12 +4,15 @@ import uvicorn
 from routes.register import register
 from routes.login import login
 from routes.account import account
-
+from routes.PasswordReset import resetPassword
+from routes.ForgotPassword import forgotPassword
 
 app = FastAPI()
 app.include_router(register)
 app.include_router(login)
 app.include_router(account)
+app.include_router(resetPassword)
+app.include_router(forgotPassword)
 
 app.add_middleware(
     CORSMiddleware,

@@ -32,10 +32,11 @@ class User(Base):
 #     # Establishes a relationship with the User table
 #     owner = relationship("User", back_populates="blogs")
 
-# class ResetCode(Base):
-#     __tablename__ = "py_code"
-#     id = sa.Column(sa.Integer, primary_key=True)
-#     email = sa.Column(sa.String, unique=True, index=True)
-#     reset_code = sa.Column(sa.String, unique=True, index=True)
-#     status = sa.Column(sa.String(1))
-#     expired_in = sa.Column(sa.D
+
+class ResetCode(Base):
+    __tablename__ = "py_code"
+    id = sa.Column(sa.Integer, primary_key=True)
+    email = sa.Column(sa.String, index=True)
+    reset_code = sa.Column(sa.String,unique=True, index=True)
+    status = sa.Column(sa.String(1))
+    expired_in = sa.Column(sa.DateTime)
