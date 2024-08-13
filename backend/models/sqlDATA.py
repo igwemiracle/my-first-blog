@@ -8,7 +8,7 @@ import sqlalchemy as sa
 Base = declarative_base()
 
 class User(Base):
-    __tablename__ = "users"
+    __tablename__ = "signin"
     id = sa.Column(sa.Integer, primary_key=True)
     username = sa.Column(sa.String, nullable=False)
     email = sa.Column(sa.String, unique=True, index=True, nullable=False)

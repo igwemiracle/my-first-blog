@@ -9,13 +9,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from routes import crud
 
 
-
 forgotPassword = APIRouter()
 
 
-@forgotPassword.get("/auth/forgot_password")
-async def renderForgotPasswordPage(request:Request):
-    return JSONResponse({"request":request})
+# @forgotPassword.get("/auth/forgot_password")
+# async def renderForgotPasswordPage(request:Request):
+#     return JSONResponse({"request":request})
 
 
 @forgotPassword.post("/auth/forgot_password")
@@ -46,8 +45,8 @@ async def forgot_password(
         <div>
             <h1> Hello {email_to_lookup}!</h1>
             <p>Someone has requested a link to reset your password. If you requested this,<br>you can change
-            your password through the link below.</p>
-            <p><a href="http://127.0.0.1:8000/auth/reset_password/?reset_password_token={reset_code}">Reset Password link</a></p>
+            your password through the link below .</p>
+            <p><a href="http://localhost:3000/auth/reset_password/?reset_password_token={reset_code}">Reset Password link</a></p>
             <p>If you didn't request this, you can ignore this email.</p>
         </div>
     </body>

@@ -16,10 +16,10 @@ app.include_router(forgotPassword)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Adjust this to match your frontend URL
+    allow_origins=["http://localhost:3000"],  # Update with your frontend's URL
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers (Content-Type, Authorization, etc.)
 )
 
 if __name__ == "__main__":
