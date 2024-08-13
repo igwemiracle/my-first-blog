@@ -4,17 +4,33 @@ import { useState, useEffect } from "react";
 const ResetPassword = () => {
     const [error, setError] = useState('');
     const [isPending, setIsPending] = useState(false);
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [NewPassword, setNewPassword] = useState('');
+    const [ConfirmPassword, setConfirmPassword] = useState('');
     const [resetPasswordToken, setResetPasswordToken] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
 
-
     useEffect(() => {
-        // Extract the reset_password_token from query parameters
-        const query = new URLSearchParams(location.search);
-        setResetPasswordToken(query.get('reset_password_token'));
+        const fetchToken = async () => {
+            const query = new URLSearchParams(location.search);
+            const token = query.get('reset_password_token');
+
+            if (token) {
+                try {
+                    const response = await fetch(`http://localhost:8000/auth/reset_password?reset_password_token=${token}`);
+                    const data = await response.json();
+                    if (response.ok) {
+                        setResetPasswordToken(data.reset_password_token);
+                    } else {
+                        setError(data.error_message || "Failed to fetch token");
+                    }
+                } catch (error) {
+                    setError("Network error");
+                }
+            }
+        };
+
+        fetchToken();
     }, [location.search]);
 
     const handleSubmit = async (e) => {
@@ -29,25 +45,24 @@ const ResetPassword = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    new_password: password,
-                    confirm_password: confirmPassword,
+                    new_password: NewPassword,
+                    confirm_password: ConfirmPassword,
                     reset_password_token: resetPasswordToken,
                 }),
             });
-            if (!response.ok) {
+            const contentType = response.headers.get("content-type");
+            let data;
+            if (response.ok) {
+                if (contentType && contentType.includes("application/json")) {
+                    data = await response.json();
+                    navigate(data.redirect_url);
+                } else {
+                    throw new Error("Response is not JSON");
+                }
+            } else {
                 const errorData = await response.json();
                 throw new Error(errorData.error_message || "An unknown error occurred");
             }
-            const contentType = response.headers.get("content-type");
-            let data;
-            if (contentType && contentType.includes("application/json")) {
-                data = await response.json();
-                // Redirect or navigate to a success page
-                navigate("/auth/login");
-            } else {
-                throw new Error("Response is not JSON");
-            }
-            return data;
         } catch (err) {
             setError(err.message);
         } finally {
@@ -63,20 +78,20 @@ const ResetPassword = () => {
                 <form onSubmit={handleSubmit}>
                     <label>New password:</label>
                     <input
-                        name="password"
+                        name="new_password"
                         type="password"
                         required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={NewPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
                     />
 
                     <div style={{ paddingTop: "30px" }}>
                         <label>Confirm password:</label>
                         <input
-                            name="confirmPassword"
+                            name="confirm_password"
                             type="password"
                             required
-                            value={confirmPassword}
+                            value={ConfirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
                     </div>

@@ -68,6 +68,7 @@ const SignIn = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+
                     {error && <p style={{ color: "red" }}>{error}</p>}
                     {!isPending && <button type="submit">Login</button>}
                     {isPending && <button disabled>Logging in...</button>}

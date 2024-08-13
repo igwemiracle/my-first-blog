@@ -56,7 +56,6 @@ const SignUp = () => {
 
     };
 
-
     return (
         <div className="sign-up">
             <h1>Register New User</h1>
@@ -76,6 +75,7 @@ const SignUp = () => {
                         type="email"
                         required
                         value={email}
+                        pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <label>Password:</label>

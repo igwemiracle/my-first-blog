@@ -26,14 +26,16 @@ const ForgotPassword = () => {
                 throw new Error(errorData.error_message || "An unknown error occurred");
             }
             const contentType = response.headers.get("content-type");
+            let data;
             if (contentType && contentType.includes("application/json")) {
-                const data = await response.json();
+                data = await response.json();
                 // Navigate to the reset password page or show a message
                 // If the backend provides a token in the response, you might use it here
-                navigate(`/auth/reset_password?reset_password_token=${data.reset_password_token}`);
+                navigate('/auth/reset_password');
             } else {
                 throw new Error("Response is not JSON");
             }
+            return data;
         } catch (err) {
             setError(err.message);
         } finally {

@@ -37,7 +37,15 @@
 
 .header-container-inner {
     width: 50%;
+    font-weight: 500;
+}
 
+.header-container-inner h1 {
+    font-size: 35px;
+}
+
+.header-container-inner p {
+    font-weight: 350;
 }
 
 .header-container {
