@@ -1,11 +1,14 @@
 import datetime
-from fastapi import Depends
+from fastapi import Depends, HTTPException, Request, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from authenticate.hash_pwd import HashPassword 
+from authenticate.jwt_handler import verify_access_token
 from database.connection import get_db
 from models.sqlDATA import ResetCode, User
 from sqlalchemy import select, insert, text
-
+from authenticate.oauth import oauth2_scheme
+from jose import jwt
+from jwt.exceptions import DecodeError
 
 hashThisPassword = HashPassword()
 
@@ -21,10 +24,32 @@ async def findUserExist(email: str, db: AsyncSession = Depends(get_db)):
     result = await db.execute(query)
     return result.scalar()
 
-async def findUserExistWithUserName(username: str, db: AsyncSession = Depends(get_db)):
+async def get_user(username: str, db: AsyncSession = Depends(get_db)):
     query = select(User).where(User.username == username)
     result = await db.execute(query)
     return result.scalar()
+
+async def get_current_user(
+        token: str = Depends(oauth2_scheme),
+          db: AsyncSession = Depends(get_db)) -> User:
+    print(f"Token: {token}")
+    try:
+        payload = verify_access_token(token)
+        print(f"Payload: {payload}")
+        username = payload.get("username")
+        if username is None:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+        
+        user = await db.execute(select(User).where(User.username == username))
+        user = user.scalar_one_or_none()
+        
+        if user is None:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
+        
+        return user
+    
+    except (jwt.ExpiredSignatureError, DecodeError):
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token is invalid or expired")
 
 async def createResetCode(email:str, reset_code:str, db:AsyncSession=Depends(get_db)):
     query = insert(ResetCode).values(

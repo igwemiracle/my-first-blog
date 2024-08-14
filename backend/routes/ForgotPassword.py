@@ -11,12 +11,6 @@ from routes import crud
 
 forgotPassword = APIRouter()
 
-
-# @forgotPassword.get("/auth/forgot_password")
-# async def renderForgotPasswordPage(request:Request):
-#     return JSONResponse({"request":request})
-
-
 @forgotPassword.post("/auth/forgot_password")
 async def forgot_password(
     userEmail: ForgotPassword,

@@ -1,8 +1,8 @@
 from sqlalchemy.ext.declarative import declarative_base
 import sqlalchemy as sa
-# from sqlalchemy.orm import relationship
-# from sqlalchemy import ForeignKey
-# from datetime import datetime
+from sqlalchemy.orm import relationship
+from sqlalchemy import ForeignKey
+from datetime import datetime
 
 
 Base = declarative_base()
@@ -15,22 +15,22 @@ class User(Base):
     hash_password = sa.Column(sa.String, nullable=False)
     is_logged_in = sa.Column(sa.Boolean, default=False)
 
-
     # Establishes a relationship with the Blog table
-    # blogs = relationship("Blog", back_populates="owner")
+    blogs = relationship("Blog", back_populates="owner")
 
-# class Blog(Base):
-#     __tablename__ = "blogs"
-#     id = sa.Column(sa.Integer, primary_key=True, index=True)
-#     author = sa.Column(sa.String, nullable=False)
-#     title = sa.Column(sa.String, index=True, nullable=False)
-#     body = sa.Column(sa.Text, nullable=False)
-#     #Automatically sets the date to the current time
-#     date = sa.Column(sa.DateTime, default=datetime.utcnow, nullable=False)
-#     owner_id = sa.Column(sa.Integer, ForeignKey("users.id"), nullable=False)
+class Blog(Base):
+    __tablename__ = "blogs"
+    id = sa.Column(sa.Integer, primary_key=True, index=True)
+    author = sa.Column(sa.String, nullable=False)
+    title = sa.Column(sa.String, index=True, nullable=False)
+    body = sa.Column(sa.Text, nullable=False)
+    #Automatically sets the date to the current time
+    date = sa.Column(sa.DateTime, default=sa.func.now())
+    owner_id = sa.Column(sa.Integer, sa.ForeignKey("signin.id"), nullable=False)
 
-#     # Establishes a relationship with the User table
-#     owner = relationship("User", back_populates="blogs")
+    # Establishes a relationship with the User and Blog tables,
+    # allowing you to access the owner of a blog and the blogs owned by a user.
+    owner = relationship("User", back_populates="blogs")
 
 
 class ResetCode(Base):

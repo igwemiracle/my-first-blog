@@ -1,8 +1,6 @@
 import asyncio
-import uuid
-from fastapi import APIRouter, Depends, Form, Request, status
-from fastapi.responses import RedirectResponse,JSONResponse
-from email_notification.SendEmail import EmailSender
+from fastapi import APIRouter, Depends, Request, status
+from fastapi.responses import JSONResponse
 from database.connection import get_db
 from models.schemas import ForgotPassword, ResetPassword
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -24,14 +22,6 @@ async def render_reset_password_page(request: Request):
     return JSONResponse({"reset_password_token": reset_password_token, "redirect_url":f"/auth/reset_password?reset_password_token={reset_password_token}" })
 
 
-
-#===================================================================
-# @resetPassword.post("/auth/reset_password")
-# async def reset_password(request: Request,
-#                          new_password: str = Form(...),
-#                          confirm_password: str = Form(...),
-#                          reset_password_token: str = Form(...),
-#                         db:AsyncSession=Depends(get_db)):
 @resetPassword.post("/auth/reset_password")
 async def reset_password(
                         reset_pass: ResetPassword,
