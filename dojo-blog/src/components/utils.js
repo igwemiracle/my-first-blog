@@ -1,7 +1,7 @@
-export const handleDelete = (blogId, history) => {
-    fetch('http://localhost:8000/blogs/' + blogId, {
+export const handleDelete = (blogId, navigate) => {
+    fetch('http://localhost:8000/auth/blogs' + blogId, {
         method: "DELETE"
     }).then(() => {
-        history.push('/');
+        navigate('/');
     });
 };

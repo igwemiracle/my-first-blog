@@ -31,12 +31,13 @@ const SignIn = () => {
                 const data = await response.json();
                 // Store the username in localStorage
                 localStorage.setItem('username', username);
-                console.log('Redirecting to:', data.redirect_url);
+                localStorage.setItem('access_token', data.access_token);
+                // console.log('Redirecting to:', data.redirect_url);
                 navigate(encodeURI(data.redirect_url));  // Redirect to the account page
             } else {
                 // Handle errors
                 const data = await response.json();
-                console.log(data)
+                console.log("Signin data =======> ", data)
                 setError(data.error_message || "Login failed.");
             }
         } catch (err) {

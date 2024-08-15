@@ -6,9 +6,7 @@ import useFetch from "./useFetch";
 
 
 const Blogs = () => {
-
-
-    const { data: blogs, isPending, error } = useFetch('http://localhost:8000/blogs')
+    const { data: blogs, isPending, error } = useFetch('http://localhost:8000/auth/blogs')
     return (
         <div className="home-03">
             {error && <div>{error}</div>}

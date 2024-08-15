@@ -13,7 +13,7 @@ const AccountPage = () => {
             <h1 className="account-h1">Welcome, {username}! This is your account page.</h1>
             <p className="account-p">You can create and upload your own blog!</p>
             <p className="account-p">click to start creating your blog</p>
-            <Link to="/create" className="account-link">Add blog</Link>
+            <Link to="/auth/create_blog" className="account-link">Add blog</Link>
         </div>
     );
 }

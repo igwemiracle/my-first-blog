@@ -4,11 +4,39 @@ import { Link, useNavigate } from "react-router-dom";
 import icon from '../assets/icons/comment-icon.png';
 import anotherIcon from '../assets/icons/delete-icon2.png';
 import { handleDelete } from './utils';
+import { useEffect, useState } from "react";
 
-
-const BlogList = ({ blogs, title }) => {
+const BlogList = ({ title }) => {
+    const [blogs, setBlogs] = useState([]);
     const navigate = useNavigate();
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+    };
 
+
+    //fetch the blogs from the backend
+    useEffect(() => {
+        const fetchBlog = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/auth/blogs', {
+                    headers: {
+                        "Authorization": `Bearer ${localStorage.getItem('access_token')}`
+                    }
+                })
+                if (response.ok) {
+                    const data = await response.json();
+                    setBlogs(data);
+                    console.log("response oooooo ===================>", data)
+                } else {
+                    console.error('Failed to fetch blogs');
+                }
+            } catch (error) {
+                console.error('Error fetching blogs:', error);
+            }
+        };
+        fetchBlog();
+    }, [])
     const truncate = (str, num) => {
         if (str.length <= num) {
             return str;
@@ -24,11 +52,11 @@ const BlogList = ({ blogs, title }) => {
                     <div>
                         <h3>{blog.title}</h3>
                         <p>{truncate(blog.body, 70)}</p>
-                        <Link to={`/blogs/${blog.id}`} className="read-more-link">
+                        <Link to={`/auth/blogs/${blog.id}`} className="read-more-link">
                             Read More
                         </Link>
                         <div className="container">
-                            <p className="text">Published on {blog.date}</p>
+                            <p className="text">Published on {formatDate(blog.date)}</p>
                         </div>
                         <Link to={'/comment'} className="icon-link">
                             <img src={icon} alt="icon-notShowing" className="icon" />

@@ -9,7 +9,7 @@ const HomePage = () => {
                     <div className="header-container-inner">
                         <h1>Explore, Learn, Inspire: Your Blogging Journey Starts Here.</h1>
                         <p style={{ marginTop: "25px" }}>Welcome to Miracle Blog, your go-to destination for insightful blog posts. Our misson is to provide a platform where ideas flow freely, and knowledge is shared generously.</p>
-                        <Link to="/blogs" className="btn">Start reading</Link>
+                        <Link to="/auth/blogs" className="btn">Start reading</Link>
                     </div>
                 </div>
             </header>

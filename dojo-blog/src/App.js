@@ -3,7 +3,7 @@ import { BrowserRouter as Router, useLocation, Routes, Route } from 'react-route
 import Navbar from './components/Navbar';
 import HomePage from './06-Home';
 import Blogs from './components/Blogs';
-import Create from './components/Create';
+// import Create from './components/Create';
 import Comments from './components/Comment';
 import BlogDetails from './components/BlogDetails';
 import NotFound from './components/NotFound';
@@ -14,6 +14,7 @@ import SignIn from './components/SignIn';
 import AccountPage from './components/Account';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
+import CreateBlog from './components/CreateBlog';
 /**
  *    FIRST STEP to making use of the Router component:
  * We need to surround our whole application using the `Router` Component. And
@@ -50,15 +51,16 @@ const Main = () => {
             <div className="content">
                 <Routes>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/blogs" element={<Blogs />} />
-                    <Route path="/create" element={<Create />} />
+                    <Route path="/auth/blogs" element={<Blogs />} />
+                    {/* <Route path="/auth/create_blog" element={<Create />} /> */}
+                    <Route path="/auth/create_blog" element={<CreateBlog />} />
                     <Route path="/account" element={<AccountPage />} />
                     <Route path="/auth/login" element={<SignIn />} />
                     <Route path="/auth/register" element={<SignUp />} />
                     <Route path="/story" element={<OurStory />} />
                     <Route path="/auth/forgot_password" element={<ForgotPassword />} />
                     <Route path="/auth/reset_password" element={<ResetPassword />} />
-                    <Route path="/blogs/:id" element={<BlogDetails />} />
+                    <Route path="/auth/blogs/:id" element={<BlogDetails />} />
                     <Route path="/comment" element={<Comments />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>

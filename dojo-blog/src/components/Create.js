@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 const Create = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
-    // const [author, setAuthor] = useState('Patience Jacob');
     const [author, setAuthor] = useState('');
 
     const [isPending, setIsPending] = useState(false);
@@ -33,7 +32,7 @@ const Create = () => {
             body: JSON.stringify(blog)
 
         }).then(() => {
-            console.log("New Blog Added!")
+            console.log("====== New Blog Added! ====")
             setIsPending(false)
             // This is set to false since it has been completed.
             navigate('/blogs')

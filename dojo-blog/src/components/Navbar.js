@@ -32,7 +32,7 @@ const Navbar = () => {
                     <>
                         {/* When not logged in show Home and Blogs */}
                         <Link to="/">Home</Link>
-                        <Link to="/blogs">Blogs</Link>
+                        <Link to="/auth/blogs">Blogs</Link>
                     </>
                 ) : (<></>)}
 
@@ -40,7 +40,7 @@ const Navbar = () => {
                     <>
                         {/* When logged in, always show Account and Logout */}
                         <Link to="/">Home</Link>
-                        <Link to="/blogs">Blogs</Link>
+                        <Link to="/auth/blogs">Blogs</Link>
                         <Link to="/account">Account</Link>
                         <Link to="/" onClick={handleLogout}>Logout</Link>
                     </>

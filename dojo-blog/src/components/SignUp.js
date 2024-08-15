@@ -40,6 +40,7 @@ const SignUp = () => {
                 data = await response.json();
                 // Store the username in localStorage
                 localStorage.setItem("username", username);
+                localStorage.setItem('access_token', data.access_token);
                 //redirect or navigate to the account page
                 navigate(data.redirect_url);
             } else {
