@@ -29,7 +29,6 @@ def set_auth(response: Response, user_id):
         httponly=True,
         samesite="Lax"
     )
-    print(f"Cookie set: {response.headers.get('Set-Cookie')}")
 
 def __hash_pwd(text: str) -> str:
     text = "miracle__" + text + "__blog"

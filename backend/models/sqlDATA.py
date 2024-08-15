@@ -2,7 +2,7 @@ from sqlalchemy.ext.declarative import declarative_base
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship
 from sqlalchemy import ForeignKey
-from datetime import datetime
+from sqlalchemy.sql import func
 
 
 Base = declarative_base()

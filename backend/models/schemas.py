@@ -1,7 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 from typing import Union, Optional
-
-
+from datetime import datetime
 class RegisterUserSchema(BaseModel):
     username: str
     email: str
@@ -21,12 +20,16 @@ class ResetPassword(BaseModel):
     new_password: Union[str, int] = None
     confirm_password: Union[str, int] = None
     
-
+    
 class CreateBlog(BaseModel):
+    id: Optional[int] = None
+    author: Optional[str] = None
     title: str
     body: str
-    author: Optional[str] = None
-
+    date: Optional[datetime] = None
+    
+    
+   
 
 class Token(BaseModel):
     access_token: str

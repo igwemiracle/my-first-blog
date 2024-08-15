@@ -1,7 +1,8 @@
 from fastapi import Depends, APIRouter, status
 from fastapi.responses import JSONResponse
 from sqlalchemy.ext.asyncio import AsyncSession
-from models.schemas import RegisterUserSchema
+from authenticate.jwt_handler import create_access_token
+from models.schemas import RegisterUserSchema, Token
 from database.connection import get_db
 from authenticate.hash_pwd import HashPassword
 from routes import crud
@@ -9,7 +10,7 @@ from routes import crud
 register = APIRouter()
 hashThisPassword = HashPassword()
 
-@register.post("/auth/register")
+@register.post("/auth/register", response_model=Token)
 async def registerUser(user_data: RegisterUserSchema, db: AsyncSession = Depends(get_db)):
     username = user_data.username
     email = user_data.email
@@ -28,6 +29,7 @@ async def registerUser(user_data: RegisterUserSchema, db: AsyncSession = Depends
             {"error_message": "Passwords do not match."},
             status_code=status.HTTP_400_BAD_REQUEST
         )
+    access_token = create_access_token(username=user_data.username)
     hashed_password = hashThisPassword.create_hash(password)
     dbUser = await crud.createRegisteredUser(username, email, hashed_password, db)
     db.add(dbUser)
@@ -35,6 +37,11 @@ async def registerUser(user_data: RegisterUserSchema, db: AsyncSession = Depends
     await db.refresh(dbUser)
 
     return JSONResponse(
-        {"message": "User registered successfully", "redirect_url": f"/account?username={username}&loggedin=True"},
+        {
+            "message": "User registered successfully",
+            "redirect_url": f"/account?username={username}&loggedin=True",
+            "access_token": access_token,
+            "token_type": "Bearer",
+         },
         status_code=status.HTTP_201_CREATED
     )

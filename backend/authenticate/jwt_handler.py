@@ -29,6 +29,5 @@ def verify_access_token(token: str) -> dict:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail="Token has expired")
     except DecodeError as e:
-        print("JWT Decode Error:", e)
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail="Token is invalid")

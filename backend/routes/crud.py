@@ -32,10 +32,8 @@ async def get_user(username: str, db: AsyncSession = Depends(get_db)):
 async def get_current_user(
         token: str = Depends(oauth2_scheme),
           db: AsyncSession = Depends(get_db)) -> User:
-    print(f"Token: {token}")
     try:
         payload = verify_access_token(token)
-        print(f"Payload: {payload}")
         username = payload.get("username")
         if username is None:
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
