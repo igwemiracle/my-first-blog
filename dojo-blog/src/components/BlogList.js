@@ -27,7 +27,6 @@ const BlogList = ({ title }) => {
                 if (response.ok) {
                     const data = await response.json();
                     setBlogs(data);
-                    console.log("response oooooo ===================>", data)
                 } else {
                     console.error('Failed to fetch blogs');
                 }
@@ -61,7 +60,7 @@ const BlogList = ({ title }) => {
                         <Link to={'/comment'} className="icon-link">
                             <img src={icon} alt="icon-notShowing" className="icon" />
                         </Link>
-                        <Link to={'/'} className="icon-link">
+                        <Link to={'#'} className="icon-link">
                             <img src={anotherIcon} alt="icon-notShowing" className="icon" onClick={() => handleDelete(blog.id, navigate)} />
                         </Link>
                     </div>
