@@ -14,27 +14,42 @@ const CreateBlog = () => {
 
         const accessToken = localStorage.getItem('access_token');
         // Get the access token from localStorage
-        const response = await fetch('http://localhost:8000/auth/create_blog', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${accessToken}`
-                // Include the access token in the Authorization header
-            },
-            body: JSON.stringify({
-                title: title,
-                body: body,
-            })
-        });
-        if (response.status === 200 || response.status === 201) {
-            // Handle success - for example, redirect to the account page
-            const result = await response.json();
-            console.log("response =====>", result)
-            navigate('/auth/blogs')
-        } else {
-            console.error("Failed to create blog");
+        try {
+            const response = await fetch('http://localhost:8000/auth/create_blog', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${accessToken}`
+                    // Include the access token in the Authorization header
+                },
+                body: JSON.stringify({
+                    title: title,
+                    body: body,
+                })
+            });
+            if (response.status === 200 || response.status === 201) {
+                // Handle success - for example, redirect to the account page
+                await response.json();
+                navigate('/auth/blogs')
+            }
+            else {
+                const errorData = await response.json();
+                if (errorData.detail === "Could not validate credentials") {
+                    alert("You need to register or login to create a blog.");
+                    navigate("/auth/login"); // Redirect to login page
+                } else {
+                    alert(errorData.detail || "Failed to create blog");
+                }
+                return;
+            }
+        } catch (error) {
+            console.error("Error:", error.message);
+            alert(error.message);
         }
     }
+
+
+
     return (
         <div className="create">
             <h1>Add a New Blog</h1>
