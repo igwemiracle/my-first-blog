@@ -1,18 +1,17 @@
 from typing import List
-from fastapi import APIRouter, Depends, HTTPException, Header
+from fastapi import APIRouter, Depends, HTTPException, Header, status
 from routes.crud import get_current_user
 from models.schemas import CreateBlog
 from sqlalchemy.ext.asyncio import AsyncSession
 from database.connection import get_db
 from models.sqlDATA import Blog, User
-from datetime import datetime
 from sqlalchemy import select
 from sqlalchemy.future import select
-
+from starlette.config import Config
 
 createBlog = APIRouter()
 
-@createBlog.post("/auth/create_blog")
+@createBlog.post("/auth/create_blog", status_code=status.HTTP_201_CREATED)
 async def UserCreateBlog(
         create_blog: CreateBlog,
         db: AsyncSession = Depends(get_db),
@@ -20,7 +19,7 @@ async def UserCreateBlog(
         current_user:User = Depends(get_current_user)):  
     
     if not authorization:
-        raise HTTPException(status_code=401, detail="Missing Authorization header")
+        raise HTTPException(status_code=404, detail="Missing Authorization header")
     
     new_blog = Blog(
         owner_id=current_user.id,
@@ -53,3 +52,20 @@ async def get_blog(id: int, db: AsyncSession = Depends(get_db)):
 
     return blog
 
+@createBlog.delete("/auth/delete/{id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_blog(
+        id: int,
+        db: AsyncSession = Depends(get_db),
+        current_user: User = Depends(get_current_user)
+):
+    query = select(Blog).filter(Blog.id == id, Blog.owner_id == current_user.id)
+    result = await db.execute(query)
+    blog = result.scalar_one_or_none()
+    
+    if blog is None:
+        raise HTTPException(status_code=404, detail="Blog not found or not authorized to delete")
+    
+    await db.delete(blog)
+    await db.commit()
+    
+    return {"detail": "Blog deleted successfully"}

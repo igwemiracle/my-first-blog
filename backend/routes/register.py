@@ -10,6 +10,8 @@ from routes import crud
 register = APIRouter()
 hashThisPassword = HashPassword()
 
+
+
 @register.post("/auth/register", response_model=Token)
 async def registerUser(user_data: RegisterUserSchema, db: AsyncSession = Depends(get_db)):
     username = user_data.username

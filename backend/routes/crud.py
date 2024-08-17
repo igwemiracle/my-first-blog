@@ -7,7 +7,7 @@ from database.connection import get_db
 from models.sqlDATA import ResetCode, User
 from sqlalchemy import select, insert, text
 from authenticate.oauth import oauth2_scheme
-from jose import jwt
+from jose import jwt, JWTError
 from jwt.exceptions import DecodeError
 
 hashThisPassword = HashPassword()
@@ -48,6 +48,11 @@ async def get_current_user(
     
     except (jwt.ExpiredSignatureError, DecodeError):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token is invalid or expired")
+    
+    except (JWTError):
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                             detail="Could not validate credentials",
+                             headers={"WWW-Authenticate": "Bearer"})
 
 async def createResetCode(email:str, reset_code:str, db:AsyncSession=Depends(get_db)):
     query = insert(ResetCode).values(

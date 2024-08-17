@@ -1,6 +1,7 @@
-from pydantic import BaseModel, validator
+from pydantic import BaseModel
 from typing import Union, Optional
 from datetime import datetime
+
 class RegisterUserSchema(BaseModel):
     username: str
     email: str
@@ -29,7 +30,6 @@ class CreateBlog(BaseModel):
     date: Optional[datetime] = None
     
     
-   
 
 class Token(BaseModel):
     access_token: str

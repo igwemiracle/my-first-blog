@@ -1,12 +1,15 @@
+import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
-import uvicorn
 from routes.register import register
 from routes.login import login
 from routes.account import account
 from routes.PasswordReset import resetPassword
 from routes.ForgotPassword import forgotPassword
 from routes.CreateBlog import createBlog
+
+
+
 
 app = FastAPI()
 app.include_router(register)
@@ -23,6 +26,10 @@ app.add_middleware(
     allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers (Content-Type, Authorization, etc.)
 )
+
+
+
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port="8000")
