@@ -1,7 +1,7 @@
 const Comments = () => {
     return (
         <div className="comment">
-            <h2>User's comment</h2>
+            <h2>Comment page</h2>
         </div>
     );
 }

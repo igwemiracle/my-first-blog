@@ -14,6 +14,7 @@ const Navbar = () => {
 
             if (response.status === 200) {
                 localStorage.removeItem('username');  // Clear the username from localStorage
+                localStorage.removeItem('access_token')
                 navigate('/');  // Redirect to the home page
             }
         } catch (error) {
@@ -33,6 +34,7 @@ const Navbar = () => {
                         {/* When not logged in show Home and Blogs */}
                         <Link to="/">Home</Link>
                         <Link to="/auth/blogs">Blogs</Link>
+
                     </>
                 ) : (<></>)}
 
@@ -48,6 +50,7 @@ const Navbar = () => {
                     <>
                         {/* When not logged in, show Login */}
                         <Link to="/auth/login">Login</Link>
+                        <Link to="/auth/create_blog" className='add-blog'>Add blog</Link>
                     </>
                 )}
 

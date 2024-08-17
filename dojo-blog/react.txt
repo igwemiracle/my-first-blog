@@ -19,17 +19,7 @@ How to create a REST API
 JSON server: Allows us to build a fake restapi just using a json file.
 `npx json-server --watch data/db.json --port 8000` this command is used to run the json server
 ====================================================================================================
-import { useHistory } from "react-router-dom";
-
-    // const history = useHistory();
-
-    // const handleDelete = () => {
-    //     fetch('http://localhost:8000/blogs/' + blog.id, {
-    //         method: "DELETE"
-    //     }).then(() => {
-    //         history.push('/blogs');
-    //     });
-    // }
-
-{/* <button onClick={handleDelete}>Delete blog</button> */}
-=================================================================================================== # date = datetime.now().strftime('%B %d, %Y')
+    superbaseDB
+project name = first-blog-site
+password = miracle@superbaseDB
+===================================================================================================

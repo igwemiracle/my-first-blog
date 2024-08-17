@@ -70,8 +70,8 @@ const CreateBlog = () => {
                         onChange={(e) => setBody(e.target.value)}
                     ></textarea>
 
-                    {!isPending && <button>Add Blog</button>}
-                    {isPending && <button disabled>Adding blog...</button>}
+                    {!isPending && <button>publish</button>}
+                    {isPending && <button disabled>publishing...</button>}
                 </form>
             </div>
         </div>

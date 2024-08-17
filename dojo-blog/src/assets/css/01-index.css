@@ -1,12 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&family=Quicksand:wght@300..700&family=Roboto:wght@100;300;400&display=swap');
-
 /* base styles */
-
 * {
     margin: 0;
-    font-family: "Quicksand", Arial;
+    font-family: 'Quicksand', Arial, sans-serif;
     color: #333;
-    font-weight:lighter;
+    font-weight: lighter;
 }
 
 .navbar {
@@ -42,6 +39,19 @@
 .navbar a:hover {
     color: #f1356d;
 }
+.add-blog {
+    background-color: #f1356d;
+    color: #fff;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.navbar a.add-blog:hover {
+    color: #fff;
+}
+
 .content {
     max-width: 600px;
     margin: 40px auto;
@@ -163,7 +173,9 @@
     background-color: #f1356d;
     color: #fff;
     border: 0;
-    padding: 8px;
+    padding: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
     border-radius: 8px;
     cursor: pointer;
     margin-top: 10px;
